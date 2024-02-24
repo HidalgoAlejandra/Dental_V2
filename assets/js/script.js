@@ -1,6 +1,6 @@
 document.write("<p>Estadisticas centro medico ñuñoa</p>");
 
-var radiologia = [
+const radiologia = [
   {
     hora: "11:00",
     especialista: "IGNACIO SCHULZ",
@@ -38,7 +38,7 @@ var radiologia = [
   },
 ];
 
-var traumatologia = [
+const traumatologia = [
   {
     hora: "8:00",
     especialista: "MARIA PAZ ALTUZARRA",
@@ -90,7 +90,7 @@ var traumatologia = [
   },
 ];
 
-var dental = [
+const dental = [
   {
     hora: "8:30",
     especialista: "ANDREA ZUÑIGA",
@@ -139,6 +139,13 @@ var dental = [
 
 //PREGUNTA 1: Agregar las siguientes horas al arreglo de Traumatología
 const [...copia_traumatologia] = traumatologia; //Se crea copia de arreglo para modificacion con push (agregar)
+//Listado antes de modificaciones
+console.log("Listado traumatologia antes");
+copia_traumatologia.forEach((x) =>
+  console.log(
+    `${x.hora} - ${x.especialista} - ${x.paciente} - ${x.rut} - ${x.prevision}`
+  )
+);
 copia_traumatologia.push(
   {
     hora: "09:00",
@@ -176,12 +183,31 @@ copia_traumatologia.push(
     prevision: "FONASA",
   }
 );
-
+//Listado despues de modificaciones
+console.log("Listado traumatologia despues");
+copia_traumatologia.forEach((x) =>
+  console.log(
+    `${x.hora} - ${x.especialista} - ${x.paciente} - ${x.rut} - ${x.prevision}`
+  )
+);
 //PREGUNTA 2: Eliminar el primer y último elemento del arreglo de Radiología
 const [...copia_radiologia] = radiologia; //Se crea copia de arreglo para modificacion
+//Listado antes de modificaciones
+console.log("Listado radiologia antes");
+copia_radiologia.forEach((x) =>
+  console.log(
+    `${x.hora} - ${x.especialista} - ${x.paciente} - ${x.rut} - ${x.prevision}`
+  )
+);
 copia_radiologia.shift(); //Eliminar el primer elemento del arreglo de Radiología
 copia_radiologia.pop(); //Eliminar el último elemento del arreglo de Radiología
-
+//Listado despues de modificaciones
+console.log("Listado radiologia despues");
+copia_radiologia.forEach((x) =>
+  console.log(
+    `${x.hora} - ${x.especialista} - ${x.paciente} - ${x.rut} - ${x.prevision}`
+  )
+);
 //PREGUNTA 3: Imprimir en la página HTML, mediante document.write y/o las funciones que estime conveniente,
 //la lista de consultas médicas de Dental.
 document.write(`<p>Listado de atenciones médicas de Dental</p>`);
@@ -208,8 +234,8 @@ listado_pacientes.forEach((x) =>
 document.write(
   `<p>Listado de pacientes atenciones médicas de Dental de ISAPRE</p>`
 );
-let isapre_dental = dental.filter(function (dental) {
-  return dental.prevision == "ISAPRE";
+let isapre_dental = dental.filter(function (x) {
+  return x.prevision == "ISAPRE";
 });
 isapre_dental.forEach((x) =>
   document.write(`<p>${x.paciente} - ${x.prevision}</p>`)
@@ -219,10 +245,8 @@ isapre_dental.forEach((x) =>
 document.write(
   `<p>Listado de pacientes atenciones médicas de Traumatología de FONASA</p>`
 );
-let fonasa_traumatologia = copia_traumatologia.filter(function (
-  copia_traumatologia
-) {
-  return copia_traumatologia.prevision == "FONASA";
+let fonasa_traumatologia = copia_traumatologia.filter(function (x) {
+  return x.prevision == "FONASA";
 });
 fonasa_traumatologia.forEach((x) =>
   document.write(`<p>${x.paciente} - ${x.prevision}</p>`)
@@ -231,29 +255,29 @@ fonasa_traumatologia.forEach((x) =>
 //Agregar código para el desafio 2 aquí
 
 document.write(
-  `<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`
+  `<p>Cantidad de atenciones para Radiología: ${copia_radiologia.length}</p>`
 );
 document.write(
-  `<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`
+  `<p>Cantidad de atenciones para Traumatología: ${copia_traumatologia.length}</p>`
 );
 document.write(`<p>Cantidad de atenciones para Dental: ${dental.length}</p>`);
 
 document.write(
-  `<p>Primera atencion: ${radiologia[0].paciente} - ${
-    radiologia[0].prevision
-  } | Última atención: ${radiologia[radiologia.length - 1].paciente} - ${
-    radiologia[radiologia.length - 1].prevision
-  }.</p>`
+  `<p>Radiologia Primera atencion: ${copia_radiologia[0].paciente} - ${
+    copia_radiologia[0].prevision
+  } | Última atención: ${
+    copia_radiologia[copia_radiologia.length - 1].paciente
+  } - ${copia_radiologia[copia_radiologia.length - 1].prevision}.</p>`
 );
 document.write(
-  `<p>Primera atencion: ${traumatologia[0].paciente} - ${
-    traumatologia[0].prevision
-  } | Última atención: ${traumatologia[traumatologia.length - 1].paciente} - ${
-    traumatologia[traumatologia.length - 1].prevision
-  }.</p>`
+  `<p>Traumatologia Primera atencion: ${copia_traumatologia[0].paciente} - ${
+    copia_traumatologia[0].prevision
+  } | Última atención: ${
+    copia_traumatologia[copia_traumatologia.length - 1].paciente
+  } - ${copia_traumatologia[copia_traumatologia.length - 1].prevision}.</p>`
 );
 document.write(
-  `<p>Primera atencion: ${dental[0].paciente} - ${
+  `<p>Dental Primera atencion: ${dental[0].paciente} - ${
     dental[0].prevision
   } | Última atención: ${dental[dental.length - 1].paciente} - ${
     dental[dental.length - 1].prevision
